@@ -5,7 +5,7 @@ import mongoose from "mongoose";
 import chatRoutes from "./routes/chat.js";
 
 const app = express();
-// 1. Changed port to 5000 to avoid the 'Address in use' error
+
 const PORT = 8080; 
 
 app.use(express.json());

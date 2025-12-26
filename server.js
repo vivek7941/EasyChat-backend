@@ -29,7 +29,7 @@ const connectDB = async () => {
         
         // 3. Only start the server once DB is connected
         app.listen(PORT, () => {
-            console.log(` Server is running on port ${PORT}`);
+            console.log(` Server is running on http://localhost:${PORT}`);
 
         });
     } catch (error) { 

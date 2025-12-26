@@ -24,7 +24,7 @@ const connectDB = async () => {
         
         // 3. Only start the server once DB is connected
         app.listen(PORT, () => {
-            console.log(` Server is running on http://localhost:${PORT}`);
+            console.log(` Server is running on https://easy-chat-frontend-blush.vercel.app/:${PORT}`);
         });
     } catch (error) { 
         console.error(" Error connecting to MongoDB:", error.message);

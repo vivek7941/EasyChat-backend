@@ -9,7 +9,12 @@ const app = express();
 const PORT = 8080; 
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: "https://easy-chat-frontend-blush.vercel.app", 
+  methods: ["GET", "POST", "DELETE", "PUT"],
+  credentials: true
+}));
+
 
 // Health check route (useful for testing)
 app.get("/", (req, res) => res.send("API is running..."));

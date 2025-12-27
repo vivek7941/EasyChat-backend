@@ -29,8 +29,10 @@ const PORT = process.env.PORT || 8080;
           console.log(" Connected to MongoDB successfully.");
           
           // 3. Only start the server once DB is connected
-          app.listen(PORT, () => {
-              console.log(` Server is running on http://easychat-backend-1qag.onrender.com`);
+         app.listen(PORT, () => {
+       console.log(`Server is running on port ${PORT}`);
+});
+
   
           });
       } catch (error) { 
@@ -41,7 +43,7 @@ const PORT = process.env.PORT || 8080;
   
   const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
   if (!GEMINI_API_KEY) {
-    console.warn("⚠️ Warning: GEMINI_API_KEY is not set in environment.");
+    console.warn(" Warning: GEMINI_API_KEY is not set in environment.");
   }
   
   connectDB();

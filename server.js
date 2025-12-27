@@ -8,38 +8,40 @@ const app = express();
 
 const PORT = process.env.PORT || 8080;
 
+// Middleware
 app.use(express.json());
 app.use(cors({
-  origin: "https://easy-chat-ebon.vercel.app", 
+  origin: "https://easy-chat-ebon.vercel.app", // Frontend URL
   methods: ["GET", "POST", "DELETE", "PUT"],
   credentials: true
 }));
 
-
+// Basic route to check if the server is running
 app.get("/", (req, res) => res.send("API is running..."));
 
-app.use("/api/chat", chatRoutes);
+// API Routes
+app.use("/api/chat", chatRoutes); // The backend API routes are prefixed with /api/chat
 
-
+// MongoDB connection
 const connectDB = async () => {
     try {
         await mongoose.connect(process.env.MONGODB_URI);
         console.log("Connected to MongoDB successfully.");
-        
-       
+
+        // Start server after DB connection
         app.listen(PORT, () => {
             console.log(`Server is running on port ${PORT}`);
         });
-    } catch (error) { 
+    } catch (error) {
         console.error("Error connecting to MongoDB:", error.message);
-        process.exit(1); // Exit if DB fails
+        process.exit(1); // Exit if DB connection fails
     }
 };
 
+// Check if GEMINI_API_KEY is set in environment
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 if (!GEMINI_API_KEY) {
-    console.warn(" Warning: GEMINI_API_KEY is not set in environment.");
+    console.warn("Warning: GEMINI_API_KEY is not set in environment.");
 }
 
-connectDB();
-
+connectDB(); // Connect to DB

@@ -8,7 +8,7 @@ const app = express();
 
 const PORT = process.env.PORT || 8080;
 
-// Middleware
+
 app.use(express.json());
 app.use(cors({
   origin: "https://easy-chat-ebon.vercel.app", // Frontend URL
@@ -16,11 +16,11 @@ app.use(cors({
   credentials: true
 }));
 
-// Basic route to check if the server is running
+
 app.get("/", (req, res) => res.send("API is running..."));
 
 // API Routes
-app.use("/api/chat", chatRoutes); // The backend API routes are prefixed with /api/chat
+app.use("/api/thread", chatRoutes);
 
 // MongoDB connection
 const connectDB = async () => {

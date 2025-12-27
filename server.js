@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 8080;
 
 app.use(express.json());
 app.use(cors({
-  origin: "https://easy-chat-frontend-blush.vercel.app", 
+  origin: "https://easychat-zeta.vercel.app/", 
   methods: ["GET", "POST", "DELETE", "PUT"],
   credentials: true
 }));

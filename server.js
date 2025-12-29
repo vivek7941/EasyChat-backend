@@ -6,42 +6,54 @@ import chatRoutes from "./routes/chat.js";
 
 const app = express();
 
+
 const PORT = process.env.PORT || 8080;
 
 
 app.use(express.json());
+
+
 app.use(cors({
-  origin: "https://easy-chat-git-master-vivek7941s-projects.vercel.app", // Frontend URL
+  origin: [
+    "https://easy-chat-ebon.vercel.app", 
+    "https://easy-chat-git-master-vivek7941s-projects.vercel.app"
+  ],
   methods: ["GET", "POST", "DELETE", "PUT"],
   credentials: true
 }));
 
 
-app.get("/", (req, res) => res.send("API is running..."));
+app.get("/", (req, res) => {
+    res.status(200).send("API is running...");
+});
 
-// API Routes
+
 app.use("/api/thread", chatRoutes);
 
-// MongoDB connection
+
 const connectDB = async () => {
     try {
-        await mongoose.connect(process.env.MONGODB_URI);
-        console.log("Connected to MongoDB successfully.");
+        if (!process.env.MONGODB_URI) {
+            throw new Error("MONGODB_URI is missing in .env file");
+        }
 
-        // Start server after DB connection
+        await mongoose.connect(process.env.MONGODB_URI);
+        console.log(" Connected to MongoDB successfully.");
+
+        
         app.listen(PORT, () => {
-            console.log(`Server is running on port ${PORT}`);
+            console.log(` Server is running on port ${PORT}`);
         });
     } catch (error) {
-        console.error("Error connecting to MongoDB:", error.message);
-        process.exit(1); // Exit if DB connection fails
+        console.error(" Error connecting to MongoDB:", error.message);
+        process.exit(1); 
     }
 };
 
-// Check if GEMINI_API_KEY is set in environment
-const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
-if (!GEMINI_API_KEY) {
-    console.warn("Warning: GEMINI_API_KEY is not set in environment.");
+// Gemini API Key Check
+if (!process.env.GEMINI_API_KEY) {
+    console.warn(" Warning: GEMINI_API_KEY is not set in environment.");
 }
 
-connectDB(); // Connect to DB
+// Initialize Connection
+connectDB();

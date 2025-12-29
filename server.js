@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 8080;
 
 app.use(express.json());
 app.use(cors({
-  origin: "https://easy-chat-git-master-vivek7941s-projects.vercel.app/", // Frontend URL
+  origin: "https://easy-chat-git-master-vivek7941s-projects.vercel.app", // Frontend URL
   methods: ["GET", "POST", "DELETE", "PUT"],
   credentials: true
 }));

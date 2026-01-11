@@ -20,7 +20,7 @@ npm install
 Create `.env` file:
 ```
 GEMINI_API_KEY=your_gemini_api_key
-PORT=5000
+
 ```
 
 Run:

@@ -12,11 +12,11 @@ const PORT = process.env.PORT || 8080;
 
 app.use(express.json());
 
-
 app.use(cors({
   origin: [
     "https://easy-chat-ebon.vercel.app", 
-    "https://easy-chat-git-master-vivek7941s-projects.vercel.app"
+    "https://easy-chat-git-master-vivek7941s-projects.vercel.app",
+    "https://easychat-plum.vercel.app" 
   ],
   methods: ["GET", "POST", "DELETE", "PUT"],
   credentials: true

@@ -1,4 +1,4 @@
-import express, { application } from "express";
+import express from "express";
 import Thread from "../models/thread.js"; 
 
 

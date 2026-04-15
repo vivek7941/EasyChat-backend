@@ -7,9 +7,9 @@ const getGeminiResponse = async (messages) => {
     if (!GEMINI_API_KEY) {
         throw new Error("GEMINI_API_KEY is missing from the server environment.");
     }
+    
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${GEMINI_API_KEY}`;
 
-   
-    const url = `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`;
 
     
     const contents = messages.map(msg => ({
